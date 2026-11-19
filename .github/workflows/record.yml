@@ -11,7 +11,7 @@ name: Stream Recorder
       shifts_left:
         description: "Continuation shifts after this one (default 1 = up to 2 shifts / ~8h total; auto-disabled if hours < 1.0)"
         required: false
-        default: "1"
+        default: "2"
         type: string
       always_continue:
         description: "true = start the next shift even if the streamer is offline at shift end. false = chain only if live."
@@ -218,7 +218,7 @@ jobs:
         env:
           TARGET_DATA: ${{ matrix.target }}
           INPUT_HOURS: ${{ github.event.inputs.hours || '4.5' }}
-          INPUT_SHIFTS_LEFT: ${{ github.event.inputs.shifts_left || '1' }}
+          INPUT_SHIFTS_LEFT: ${{ github.event.inputs.shifts_left || '2' }}
           INPUT_ALWAYS_CONTINUE: ${{ github.event.inputs.always_continue || 'true' }}
           INPUT_USE_COOKIES: ${{ github.event.inputs.use_cookies || 'false' }}
           YT_COOKIES: ${{ secrets.YT_COOKIES }}
